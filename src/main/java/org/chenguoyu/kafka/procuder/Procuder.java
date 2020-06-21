@@ -37,6 +37,11 @@ public class Procuder {
         properties.put("bootstrap.servers", brokerList);
         // 设置重试次数
         properties.put(ProducerConfig.RETRIES_CONFIG, 10);
+        // 设置有多少个副本成功收到消息，才算成功写入
+        // 0:表示不需要确认，发送后就不管了，可靠性最低
+        // 1:表示只需要leader确认
+        // -1或all:表示需要leader和所有follow确认
+        properties.put(ProducerConfig.ACKS_CONFIG, "0");
         return properties;
     }
 

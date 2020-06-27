@@ -33,8 +33,8 @@ public class Procuder {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         // value序列化方式
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        // 如果有多个，则以 , 号分隔
-        properties.put("bootstrap.servers", brokerList);
+        // kafka集群清单，如果有多个，则以 , 号分隔，可以不写全部，kafka会自动发现
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, brokerList);
         // 设置重试次数
         properties.put(ProducerConfig.RETRIES_CONFIG, 10);
         // 设置有多少个副本成功收到消息，才算成功写入
